@@ -1,0 +1,59 @@
+// plasma.amplitude — Amplitude Audio middleware.
+//
+// The AUTHORED manifest, kept in source next to the plugin. It declares identity, compatibility,
+// what to load and what to ship. Component hashes and sizes are NOT here: the packaging step
+// computes those and emits them into the published manifest that ships inside the .plpkg.
+//
+// Field reference and validation rules: Docs/PluginPackageManagerPlan.html §05.
+
+PackageInfo
+{
+	// ---- identity -------------------------------------------------------------
+	// Version starts at 1.0.0 rather than inheriting an engine version: this package
+	// versions on its own changes from now on, not on the engine's.
+	string %Id{"plasma.amplitude"}
+	string %Version{"1.0.0"}
+	string %Publisher{"PlasmaTechnology"}
+	string %License{"MIT"}
+	string %Homepage{"https://plasmagameengine.com"}
+
+	// ---- compatibility --------------------------------------------------------
+	// Must equal plSdkVersion::GetAbiTag() of the engine these binaries were built
+	// against. The build configuration is part of it - a Development and a Shipping
+	// build do not share a binary interface.
+	string %MinEngineVersion{"0.7.0"}
+	string %MaxEngineVersion{"0.7.0"}
+	string %AbiTag{"win64-msvc19-0.7.0-dev"}
+
+	// ---- presentation ---------------------------------------------------------
+	string %DisplayName{"Amplitude Audio"}
+	string %Category{"Audio"}
+	string %Description{"A fully-featured audio system middleware powered by the Amplitude Audio SDK.
+
+Everything needed is included - Amplitude is Apache-2.0, so its runtime library ships with this package and nothing has to be installed separately.
+
+Plays sound through the engine's audio system, so it replaces rather than accompanies the other audio backends."}
+	string %Icon{"Branding/AmplitudeIcon.png"}
+	string %Banner{"Branding/AmplitudeBanner.png"}
+
+	// ---- binaries -------------------------------------------------------------
+	// PackageDependencies is what puts the redistributable and its licence into
+	// runtime-win64 alongside the plugin that loads them.
+	string %EditorPlugins{"plEditorPluginAmplitudeAudio"}
+	string %EditorEnginePlugins{}
+	string %RuntimePlugins{"plAmplitudeAudioPlugin"}
+	string %PackageDependencies{"Amplitude.dll", "Amplitude-LICENSE.txt"}
+
+	// ---- dependencies ---------------------------------------------------------
+	// The bundle declares RequiredPlugins{"AudioSystem"}, but AudioSystem is
+	// Code/Engine/AudioSystem - an engine module, not a plugin bundle. It ships with
+	// the engine and is linked directly, so there is nothing for the registry to
+	// resolve and no Requires entry to write.
+
+	// ---- components -----------------------------------------------------------
+	Component { string %Name{"manifest"} string %Platform{"any"} }
+	Component { string %Name{"runtime-win64"} string %Platform{"win64"} }
+	Component { string %Name{"editor-win64"} string %Platform{"win64"} }
+	Component { string %Name{"icon"} string %Platform{"any"} }
+	Component { string %Name{"banner"} string %Platform{"any"} }
+}

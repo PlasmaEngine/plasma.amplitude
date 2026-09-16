@@ -79,6 +79,10 @@ public static class PlasmaPackageAmplitude
 
             CopyIfDifferent(Path.Combine(sdkRoot, "lib", "x64-windows", "shared", "Amplitude.dll"),
                 Path.Combine(binaryDirectory, "Amplitude.dll"));
+            CopyIfDifferent(Path.Combine(sdkRoot, "lib", "x64-windows", "shared", "samplerate.dll"),
+                Path.Combine(binaryDirectory, "samplerate.dll"));
+            CopyIfDifferent(Path.Combine(context.ProjectRoot, "ThirdParty", "Amplitude", "samplerate-LICENSE.txt"),
+                Path.Combine(binaryDirectory, "samplerate-LICENSE.txt"));
 
             // Apache-2.0 asks that the licence travel with the binary, so it is staged next to the
             // DLL and listed in PackageDependencies - that puts both in the same component, and a

@@ -16,8 +16,8 @@ PluginInfo
 {
 	string %DisplayName{"Amplitude Audio"}
 	string %Category{"Audio"}
-	string %MinEngineVersion{"0.11.2"}
-	string %MaxEngineVersion{"0.11.2"}
+	string %MinEngineVersion{"0.12.0"}
+	string %MaxEngineVersion{"0.12.0"}
 	string %Icon{"AmplitudeIcon.png"}
 	string %Banner{"AmplitudeBanner.png"}
 	string %Description{"A fully-featured audio system middleware powered by the Amplitude Audio SDK. The runtime library ships with the package - nothing to install separately."}

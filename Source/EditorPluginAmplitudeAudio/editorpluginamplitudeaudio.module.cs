@@ -17,7 +17,8 @@ public class EditorPluginAmplitudeAudioModule : ModuleRules
         PlasmaPackageSdk.AddPackagePluginImport(this, context, "Source/AmplitudeAudioPlugin",
             "plAmplitudeAudioPlugin");
 
-        PlasmaPackageQt.ConfigureQtModule(this, context, "EditorPluginAmplitudeAudioModule",
-            "Source/EditorPluginAmplitudeAudio", "Core", "Gui", "Widgets");
+        // The settings dialog content is engine-drawn: EditorUi and the retained UI runtime.
+        PlasmaPackageSdk.AddImportLibrary(this, context, "plEditorUi");
+        PlasmaPackageSdk.AddImportLibrary(this, context, "plGameUiPlugin");
     }
 }

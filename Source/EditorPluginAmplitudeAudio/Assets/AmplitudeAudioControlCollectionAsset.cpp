@@ -182,7 +182,7 @@ plResult plAmplitudeAudioControlCollectionAssetDocument::TransformAssetEntry(con
 
   {
     plStringBuilder sAssetFile = entry.m_sControlFile;
-    if (!plQtEditorApp::GetSingleton()->MakeDataDirectoryRelativePathAbsolute(sAssetFile))
+    if (!plEditorApp::GetSingleton()->MakeDataDirectoryRelativePathAbsolute(sAssetFile))
     {
       plLog::Warning("Failed to make audio control path absolute: '{0}'", entry.m_sControlFile);
       return PL_FAILURE;

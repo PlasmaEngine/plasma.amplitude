@@ -15,14 +15,13 @@
 #pragma once
 
 #include <Foundation/Basics.h>
-#include <GuiFoundation/DocumentWindow/DocumentWindow.moc.h>
+#include <GuiFoundation/DocumentWindow/DocumentWindow.h>
 #include <ToolsFoundation/Object/DocumentObjectManager.h>
 
-class plQtAmplitudeAudioControlCollectionAssetDocumentWindow : public plQtDocumentWindow
+/// The audio control collection asset's window: its properties.
+class plAmplitudeAudioControlCollectionAssetDocumentWindow : public plDocumentWindow
 {
-  Q_OBJECT
-
 public:
-  explicit plQtAmplitudeAudioControlCollectionAssetDocumentWindow(plDocument* pDocument);
-  ~plQtAmplitudeAudioControlCollectionAssetDocumentWindow() override;
+  explicit plAmplitudeAudioControlCollectionAssetDocumentWindow(plDocument* pDocument);
+  ~plAmplitudeAudioControlCollectionAssetDocumentWindow() override;
 };

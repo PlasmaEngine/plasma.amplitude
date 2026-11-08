@@ -23,9 +23,40 @@
 #include <GuiFoundation/Action/DocumentActions.h>
 #include <GuiFoundation/Action/StandardMenus.h>
 
+#include <EditorUi/Widgets.h>
+#include <Foundation/Configuration/Plugin.h>
+
+namespace
+{
+  /// The package's icon folder: the icons under their ids (":/AssetIcons/Audio_Control_Collection.svg" is
+  /// "EditorIcons/AssetIcons/Audio_Control_Collection.svg"). The plugin binary lives in <package>/Bin/<configuration>.
+  plString s_sIconFolder;
+
+  void RegisterIconFolder()
+  {
+    plStringBuilder sPlugin, sCopy;
+    plPlugin::GetPluginPaths("plEditorPluginAmplitudeAudio", sPlugin, sCopy, 0);
+
+    plStringBuilder sFolder = sPlugin.GetFileDirectory();
+    sFolder.AppendPath("..", "..", "EditorIcons");
+    sFolder.MakeCleanPath();
+
+    s_sIconFolder = sFolder;
+    plEditorUi::AddIconFolder(s_sIconFolder);
+  }
+
+  void UnregisterIconFolder()
+  {
+    plEditorUi::RemoveIconFolder(s_sIconFolder);
+    s_sIconFolder.Clear();
+  }
+} // namespace
+
 // BEGIN-DOCS-CODE-SNIPPET: plugin-setup
 PL_PLUGIN_ON_LOADED()
 {
+  RegisterIconFolder();
+
   plAmplitudeAudioActions::RegisterActions();
 
   // Control Collection
@@ -62,5 +93,7 @@ PL_PLUGIN_ON_LOADED()
 PL_PLUGIN_ON_UNLOADED()
 {
   plAmplitudeAudioActions::UnregisterActions();
+
+  UnregisterIconFolder();
 }
 // END-DOCS-CODE-SNIPPET

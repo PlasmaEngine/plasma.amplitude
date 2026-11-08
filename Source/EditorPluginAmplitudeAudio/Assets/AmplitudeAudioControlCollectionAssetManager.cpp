@@ -16,7 +16,7 @@
 
 #include <EditorPluginAmplitudeAudio/Assets/AmplitudeAudioControlCollectionAsset.h>
 #include <EditorPluginAmplitudeAudio/Assets/AmplitudeAudioControlCollectionAssetManager.h>
-#include <EditorPluginAmplitudeAudio/Assets/AmplitudeAudioControlCollectionAssetWindow.moc.h>
+#include <EditorPluginAmplitudeAudio/Assets/AmplitudeAudioControlCollectionAssetWindow.h>
 
 PL_BEGIN_DYNAMIC_REFLECTED_TYPE(plAmplitudeAudioControlCollectionAssetDocumentManager, 1, plRTTIDefaultAllocator<plAmplitudeAudioControlCollectionAssetDocumentManager>)
 PL_END_DYNAMIC_REFLECTED_TYPE;
@@ -27,15 +27,13 @@ plAmplitudeAudioControlCollectionAssetDocumentManager::plAmplitudeAudioControlCo
 
   m_DocTypeDesc.m_sDocumentTypeName = "Audio Control Collection";
   m_DocTypeDesc.m_sFileExtension = "plAudioControlCollectionAsset";
-  m_DocTypeDesc.m_sIcon = ":/AssetIcons/Audio_Control_Collection.png";
+  m_DocTypeDesc.m_sIcon = ":/AssetIcons/Audio_Control_Collection.svg";
   m_DocTypeDesc.m_pDocumentType = plGetStaticRTTI<plAmplitudeAudioControlCollectionAssetDocument>();
   m_DocTypeDesc.m_pManager = this;
   m_DocTypeDesc.m_CompatibleTypes.PushBack("CompatibleAsset_AmplitudeAudio_Audio_Control_Collection");
 
   m_DocTypeDesc.m_sResourceFileExtension = "plAudioSystemControls";
   m_DocTypeDesc.m_AssetDocumentFlags = plAssetDocumentFlags::AutoTransformOnSave;
-
-  plQtImageCache::GetSingleton()->RegisterTypeImage("Audio Control Collection", QPixmap(":/AssetIcons/Audio_Control_Collection.png"));
 }
 
 plAmplitudeAudioControlCollectionAssetDocumentManager::~plAmplitudeAudioControlCollectionAssetDocumentManager()
@@ -51,7 +49,7 @@ void plAmplitudeAudioControlCollectionAssetDocumentManager::OnDocumentManagerEve
     {
       if (e.m_pDocument->GetDynamicRTTI() == plGetStaticRTTI<plAmplitudeAudioControlCollectionAssetDocument>())
       {
-        auto* pDocWnd = new plQtAmplitudeAudioControlCollectionAssetDocumentWindow(e.m_pDocument);
+        auto* pDocWnd = new plAmplitudeAudioControlCollectionAssetDocumentWindow(e.m_pDocument);
       }
     }
     break;

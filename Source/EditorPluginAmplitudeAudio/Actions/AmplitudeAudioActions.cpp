@@ -16,7 +16,7 @@
 
 #include <EditorPluginAmplitudeAudio/Actions/AmplitudeAudioActions.h>
 #include <EditorPluginAmplitudeAudio/Core/AmplitudeAudioControlsManager.h>
-#include <EditorPluginAmplitudeAudio/Dialogs/AmplitudeAudioSettingsDialog.moc.h>
+#include <EditorPluginAmplitudeAudio/Dialogs/AmplitudeAudioSettingsEngineDlg.h>
 
 #include <GuiFoundation/Action/ActionManager.h>
 
@@ -102,8 +102,7 @@ void plAmplitudeAudioAction::Execute(const plVariant& value)
 {
   if (m_Type == ActionType::ProjectSettings)
   {
-    plQtAmplitudeAudioSettingsDialog dlg(nullptr);
-    dlg.exec();
+    plAmplitudeAudioSettingsEngineDlg::Open();
   }
 
   if (m_Type == ActionType::ReloadControls)

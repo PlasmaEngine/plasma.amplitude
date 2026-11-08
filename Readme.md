@@ -19,7 +19,7 @@ Package.plPackage             the manifest - identity, compatibility, components
 AmplitudeAudio.plPluginBundle legacy descriptor, kept until the engine reads manifests directly
 Source/
   AmplitudeAudioPlugin/       runtime -> plAmplitudeAudioPlugin  (ships Amplitude.dll)
-  EditorPluginAmplitudeAudio/ editor  -> plEditorPluginAmplitudeAudio  (Qt: asset window, settings dialog)
+  EditorPluginAmplitudeAudio/ editor  -> plEditorPluginAmplitudeAudio  (asset window, settings dialog)
 Configs/                      build rules for building against an installed engine SDK
 ThirdParty/Amplitude/         the Apache-2.0 licence that ships with the redistributable
 Branding/                     icon and banner
